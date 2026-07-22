@@ -48,5 +48,8 @@
     <Reference Include="RiftOfTheNecroManager">
       <HintPath>lib\RiftOfTheNecroManager.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>lib\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

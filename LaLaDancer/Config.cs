@@ -8,6 +8,7 @@ public static class Config {
         const string GROUP = "Bugfixes";
         
         public static Setting<bool> ArmadilloHitSounds { get; } = new(GROUP, "Fix Armadillo Hitsounds", true, "Fixes the timing of hitsounds for armadillos on subdivisions not divisible by 3.");
+        public static Setting<bool> ScoreDisplay { get; } = new(GROUP, "Fix Score Display", true, "Adds more digits to the in-game score display for scores above 10 million.");
     }
     
     public static class QOL {
