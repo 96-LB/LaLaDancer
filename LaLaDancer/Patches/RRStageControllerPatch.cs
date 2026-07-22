@@ -1,6 +1,7 @@
 using System.Collections;
 using HarmonyLib;
 using RhythmRift;
+using RiftOfTheNecroManager;
 using Shared.Audio;
 using Shared.RhythmEngine;
 
@@ -31,6 +32,17 @@ public static class RRStageControllerPatch {
     public static void HandleBeatUpdate(RRStageController __instance, FmodTimeCapsule fmodTimeCapsule) {
         if(Config.Bugfixes.BlademasterSfx) {
             AudioManager.Instance.SetGlobalBPM(__instance.BeatmapPlayer.GetCurrentBeatLengthInSeconds(fmodTimeCapsule.CurrentBeatNumber));
+        }
+    }
+    
+    [HarmonyPatch(nameof(RRStageController.BeginPlay))]
+    [HarmonyPrefix]
+    public static void BeginPlay(RRStageController __instance) {
+        if(Config.Bugfixes.Countdown && __instance._beatmaps.Count > 0) {
+            var startBeat = __instance._isPracticeMode ? __instance._practiceModeStartBeatNumber - __instance._practiceModeTotalBeatsSkippedBeforeStartBeatmap : 0f;
+            var beatmap = __instance._beatmaps[0];
+            var bpm = 60 / (beatmap.GetTimeFromBeatNumber(startBeat) - beatmap.GetTimeFromBeatNumber(startBeat - 1));
+            __instance._customTrackCountdownBpm = bpm;
         }
     }
 }

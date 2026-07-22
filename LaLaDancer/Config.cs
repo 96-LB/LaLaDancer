@@ -12,6 +12,7 @@ public static class Config {
         public static Setting<bool> BlademasterSfx { get; } = new(GROUP, "Fix Blademaster Sounds", true, "Fixes the speed of blademaster sound effects.");
         public static Setting<bool> ScoreDisplay { get; } = new(GROUP, "Fix Score Display", true, "Adds more digits to the in-game score display for scores above 10 million.");
         public static Setting<bool> CustomParticles { get; } = new(GROUP, "Fix Custom Particles", true, "Fixes a bug which causes only the first 75% of custom particles to be displayed in custom charts.");
+        public static Setting<bool> Countdown { get; } = new(GROUP, "Fix Countdown Speed", true, "Fixes the countdown speed when using practice mode in a chart with BPM changes.");
     }
     
     public static class QOL {
