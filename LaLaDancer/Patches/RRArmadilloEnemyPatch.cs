@@ -1,6 +1,5 @@
 using HarmonyLib;
 using RhythmRift.Enemies;
-using RiftOfTheNecroManager;
 using UnityEngine;
 
 namespace LaLaDancer.Patches;
