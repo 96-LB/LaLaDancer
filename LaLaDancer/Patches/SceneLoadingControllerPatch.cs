@@ -10,6 +10,7 @@ public static class SceneLoadingControllerPatch {
     [HarmonyPrefix]
     public static void GoToSceneRoutine(ref SceneLoadData.SceneToLoadMetaData sceneToLoadMetaData, ref bool shouldShowLoadingScreen) {
         if(Config.QOL.SkipSplashScreen && sceneToLoadMetaData.SceneName == "SplashScreen") {
+            // redirect splash screen to main menu
             sceneToLoadMetaData.SceneName = "MainMenu";
             shouldShowLoadingScreen = true;
         }

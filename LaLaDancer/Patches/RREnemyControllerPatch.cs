@@ -11,7 +11,7 @@ public static class RREnemyControllerPatch {
     [HarmonyPatch(nameof(RREnemyController.HasTimingAlteringTrapBelow))]
     [HarmonyPostfix]
     public static void HasTimingAlteringTrapsBelow(ref bool __result) {
-        // this occasionally misfires, so we just disable when the bugfix is turned on
+        // this occasionally misfires, so we just disable the function when the bugfix is turned on
         __result &= !Config.Bugfixes.PredictiveSfx;
     }
     
