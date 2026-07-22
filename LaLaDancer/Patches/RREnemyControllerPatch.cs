@@ -1,7 +1,6 @@
 using HarmonyLib;
 using LaLaDancer;
 using RhythmRift;
-using RhythmRift.Enemies;
 using Shared.RhythmEngine;
 
 namespace LalaDancer.Patches;
@@ -13,13 +12,13 @@ public static class RREnemyControllerPatch {
     [HarmonyPostfix]
     public static void HasTimingAlteringTrapsBelow(ref bool __result) {
         // this occasionally misfires, so we just disable when the bugfix is turned on
-        __result &= !Config.Bugfixes.PredictiveHitSounds;
+        __result &= !Config.Bugfixes.PredictiveSfx;
     }
     
     [HarmonyPatch(nameof(RREnemyController.TryQueueActionRowSoundsForEnemy))]
     [HarmonyPrefix]
     public static bool TryQueueActionRowSoundsForEnemy(float timeUntilNextBeat) {
         // sound effects are queued way too early; run this function no more than 100ms before we need to
-        return !Config.Bugfixes.PredictiveHitSounds || (timeUntilNextBeat > LatencyManager.AudioLatencyOffset - LatencyManager.VideoLatencyOffset + .1f);
+        return !Config.Bugfixes.PredictiveSfx || (timeUntilNextBeat > LatencyManager.AudioLatencyOffset - LatencyManager.VideoLatencyOffset + .1f);
     }
 }

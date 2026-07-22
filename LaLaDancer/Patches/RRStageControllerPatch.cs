@@ -1,6 +1,8 @@
 using System.Collections;
 using HarmonyLib;
 using RhythmRift;
+using Shared.Audio;
+using Shared.RhythmEngine;
 
 namespace LaLaDancer.Patches;
 
@@ -21,6 +23,14 @@ public static class RRStageControllerPatch {
                 var textureSheetAnimation = __instance._rhythmRiftBackgroundFx._customCharacterParticles.textureSheetAnimation;
                 textureSheetAnimation.startFrameMultiplier = 1;
             }
+        }
+    }
+    
+    [HarmonyPatch(nameof(RRStageController.HandleBeatUpdate))]
+    [HarmonyPostfix]
+    public static void HandleBeatUpdate(RRStageController __instance, FmodTimeCapsule fmodTimeCapsule) {
+        if(Config.Bugfixes.BlademasterSfx) {
+            AudioManager.Instance.SetGlobalBPM(__instance.BeatmapPlayer.GetCurrentBeatLengthInSeconds(fmodTimeCapsule.CurrentBeatNumber));
         }
     }
 }
