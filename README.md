@@ -5,7 +5,7 @@ This project is a mod for Rift of the NecroDancer which provides miscellaneous q
 > [!WARNING]
 > BepInEx mods are <ins>**not officially supported**</ins> by Rift of the NecroDancer. If you encounter any issues with this mod, please open an issue on this GitHub repository, and do not submit reports to Brace Yourself Games!
 
-This mod has not yet been released.
+The current version is <ins>**v0.1.0**</ins>. Downloads for the latest version can be found [here](https://github.com/96-LB/LaLaDancer/releases/latest). The changelog can be found [here](Changelog.md).
 
 ## Installation
 
