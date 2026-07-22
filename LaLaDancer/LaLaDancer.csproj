@@ -48,6 +48,12 @@
     <Reference Include="RiftOfTheNecroManager">
       <HintPath>lib\RiftOfTheNecroManager.dll</HintPath>
     </Reference>
+    <Reference Include="TicToc.ObjectPooling.Runtime">
+      <HintPath>lib\TicToc.ObjectPooling.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>lib\Unity.Mathematics.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>lib\Unity.TextMeshPro.dll</HintPath>
     </Reference>
