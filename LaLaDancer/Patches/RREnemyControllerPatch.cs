@@ -1,9 +1,8 @@
 using HarmonyLib;
-using LaLaDancer;
 using RhythmRift;
 using Shared.RhythmEngine;
 
-namespace LalaDancer.Patches;
+namespace LaLaDancer.Patches;
 
 
 [HarmonyPatch(typeof(RREnemyController))]
@@ -19,6 +18,6 @@ public static class RREnemyControllerPatch {
     [HarmonyPrefix]
     public static bool TryQueueActionRowSoundsForEnemy(float timeUntilNextBeat) {
         // sound effects are queued way too early; run this function no more than 100ms before we need to
-        return !Config.Bugfixes.PredictiveSfx || (timeUntilNextBeat > LatencyManager.AudioLatencyOffset - LatencyManager.VideoLatencyOffset + .1f);
+        return !Config.Bugfixes.PredictiveSfx || (timeUntilNextBeat < LatencyManager.AudioLatencyOffset - LatencyManager.VideoLatencyOffset + .1f);
     }
 }
