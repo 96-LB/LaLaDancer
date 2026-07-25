@@ -35,5 +35,5 @@ By default, all bugfixes are applied as soon as the mod is installed, but all qu
 - Custom particles on custom charts will now display all sprites from the spritesheet, instead of just the first 75%.
 - The practice mode countdown now matches the tempo of the section you start at instead of the BPM at the beginning of the chart.
 
-## Quality of life
+### Quality of life
 - You can now automatically skip the splash screen on the game startup.
