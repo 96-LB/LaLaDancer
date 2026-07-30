@@ -1,7 +1,6 @@
 using System.Collections;
 using HarmonyLib;
 using RhythmRift;
-using RiftOfTheNecroManager;
 using Shared.Audio;
 using Shared.RhythmEngine;
 using UnityEngine;
