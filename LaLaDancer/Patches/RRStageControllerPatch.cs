@@ -48,9 +48,8 @@ public static class RRStageControllerPatch {
     public static void BeginPlay(RRStageController __instance) {
         if(Config.Bugfixes.Countdown && __instance._beatmaps.Count > 0) {
             // countdowns for custom charts should use the bpm at the start beat, not the hardcoded countdownBpm
-            var startBeat = Mathf.Max(2, __instance._practiceModeStartBeatNumber - __instance._practiceModeTotalBeatsSkippedBeforeStartBeatmap);
-            var beatmap = __instance._beatmaps[0];
-            var bpm = 60 / (beatmap.GetTimeFromBeatNumber(startBeat) - beatmap.GetTimeFromBeatNumber(startBeat - 1));
+            var startBeat = __instance._practiceModeStartBeatNumber - __instance._practiceModeTotalBeatsSkippedBeforeStartBeatmap;
+            var bpm = 60 / __instance.BeatmapPlayer.GetCurrentBeatLengthInSeconds((int)startBeat);
             __instance._customTrackCountdownBpm = bpm;
         }
     }
