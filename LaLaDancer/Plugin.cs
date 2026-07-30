@@ -7,7 +7,7 @@ using UnityEngine;
 namespace LaLaDancer;
 
 
-[BepInPlugin("com.lalabuff.necrodancer.laladancer", "LaLaDancer", "0.1.1")]
+[BepInPlugin("com.lalabuff.necrodancer.laladancer", "LaLaDancer", "0.2.0")]
 [NecroManagerInfo(menuNameOverride: "LaLaDancer")]
 public class Plugin : RiftPlugin {
     public bool AntiSoftlockActive { get; private set; } = false;

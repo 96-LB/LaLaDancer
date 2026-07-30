@@ -5,7 +5,7 @@ This project is a mod for Rift of the NecroDancer which provides miscellaneous q
 > [!WARNING]
 > BepInEx mods are <ins>**not officially supported**</ins> by Rift of the NecroDancer. If you encounter any issues with this mod, please open an issue on this GitHub repository, and do not submit reports to Brace Yourself Games!
 
-The current version is <ins>**v0.1.1**</ins>. Downloads for the latest version can be found [here](https://github.com/96-LB/LaLaDancer/releases/latest). The changelog can be found [here](Changelog.md).
+The current version is <ins>**v0.2.0**</ins>. Downloads for the latest version can be found [here](https://github.com/96-LB/LaLaDancer/releases/latest). The changelog can be found [here](Changelog.md).
 
 ## Installation
 
@@ -34,6 +34,11 @@ By default, all bugfixes are applied as soon as the mod is installed, but all qu
 - The score display can now display more than 7 digits.
 - Custom particles on custom charts will now display all sprites from the spritesheet, instead of just the first 75%.
 - The practice mode countdown now matches the tempo of the section you start at instead of the BPM at the beginning of the chart.
+- Custom assets for enemies now properly work for skeletons, armadillos, and wyrms when the static monsters setting is enabled.
+- Names which include "GI" no longer break the text display on the custom chart menu.
 
 ### Quality of life
 - You can now automatically skip the splash screen on the game startup.
+- You can now pause the game or retry levels during the countdown at the beginning of the level or shortly after unpausing.
+- You can now prevent the game from pausing when you unfocus or refocus the application during gameplay.
+- In the event of a softlock, you can hold a key (default F8) to reset the game to the main menu. Warning: this may cause unexpected behaviour.
