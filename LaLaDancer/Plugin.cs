@@ -10,11 +10,16 @@ namespace LaLaDancer;
 [BepInPlugin("com.lalabuff.necrodancer.laladancer", "LaLaDancer", "0.1.1")]
 [NecroManagerInfo(menuNameOverride: "LaLaDancer")]
 public class Plugin : RiftPlugin {
+    public bool AntiSoftlockActive { get; private set; } = false;
     public float AntiSoftlockHoldTime { get; private set; } = 0f;
     public int AntiSoftlockTicks { get; private set; } = 0;
     
+    protected override void OnInit() {
+        AntiSoftlockActive = true;
+    }
+    
     public void Update() {
-        if(!PluginData.Metadata.Deactivated && LaLaDancer.Config.QOL.EnableAntiSoftlock) {
+        if(AntiSoftlockActive && LaLaDancer.Config.QOL.EnableAntiSoftlock) {
             if(Input.GetKeyDown(LaLaDancer.Config.QOL.AntiSoftlockKey)) {
                 StartAntiSoftlock();
             } else if(Input.GetKeyUp(LaLaDancer.Config.QOL.AntiSoftlockKey) && AntiSoftlockHoldTime > 0f) {

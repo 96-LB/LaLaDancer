@@ -1,6 +1,5 @@
 using HarmonyLib;
 using RhythmRift;
-using RhythmRift.Enemies;
 using Shared.RhythmEngine;
 using UnityEngine;
 
