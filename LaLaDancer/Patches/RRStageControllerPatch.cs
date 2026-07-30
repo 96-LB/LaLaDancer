@@ -1,8 +1,12 @@
 using System.Collections;
 using HarmonyLib;
 using RhythmRift;
+using RiftOfTheNecroManager;
+using Shared;
 using Shared.Audio;
 using Shared.RhythmEngine;
+using Shared.RiftInput;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace LaLaDancer.Patches;
@@ -47,6 +51,30 @@ public static class RRStageControllerPatch {
             var beatmap = __instance._beatmaps[0];
             var bpm = 60 / (beatmap.GetTimeFromBeatNumber(startBeat) - beatmap.GetTimeFromBeatNumber(startBeat - 1));
             __instance._customTrackCountdownBpm = bpm;
+        }
+    }
+    
+    [HarmonyPatch(nameof(RRStageController.CanPause), MethodType.Getter)]
+    [HarmonyPostfix]
+    public static void CanPause(RRStageController __instance, ref bool __result) {
+        if(Config.QOL.CountdownPausing) {
+            __result = !__instance._isShowingCalibrationResults && !__instance._isPostGameScreenVisible;
+        }
+    }
+    
+    [HarmonyPatch(typeof(StageController<RRBeatmapPlayer>), nameof(StageController<>.HandleUnpauseRoutine))]
+    [HarmonyPostfix]
+    public static void HandleUnpauseRoutine(RRStageController __instance) {
+        if(Config.QOL.CountdownPausing && !__instance._isDisplayingDialogue) {
+            InputAccessor.Instance.EnterInputContext(InputAccessor.InputContext.Gameplay, shouldDisableOtherMaps: true);
+        }
+    }
+        
+    [HarmonyPatch(typeof(StageController<RRBeatmapPlayer>), nameof(StageController<>.HandlePauseRoutine))]
+    [HarmonyPostfix]
+    public static void HandlePauseRoutine(RRStageController __instance) {
+        if(Config.QOL.CountdownPausing) {
+            __instance._pauseRoutine?.Pipe(__instance.StopCoroutine);
         }
     }
 }
