@@ -1,5 +1,4 @@
 using HarmonyLib;
-using RiftOfTheNecroManager;
 using TMPro;
 
 namespace LaLaDancer.Patches;
