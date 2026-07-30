@@ -38,7 +38,8 @@ public static class RRStageControllerPatch {
         if(Config.Bugfixes.BlademasterSfx) {
             // blademasters use the global bpm flag to set the speed of their sound effect
             // the game sets this flag only at the start of the beatmap, so bpm changes cause problems
-            AudioManager.Instance.SetGlobalBPM(__instance.BeatmapPlayer.GetCurrentBeatLengthInSeconds(fmodTimeCapsule.CurrentBeatNumber));
+            var bpm = 60 / __instance.BeatmapPlayer.GetCurrentBeatLengthInSeconds(fmodTimeCapsule.CurrentBeatNumber);
+            AudioManager.Instance.SetGlobalBPM(bpm);
         }
     }
     
