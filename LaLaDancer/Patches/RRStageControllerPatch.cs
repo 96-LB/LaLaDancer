@@ -58,7 +58,9 @@ public static class RRStageControllerPatch {
     [HarmonyPostfix]
     public static void CanPause(RRStageController __instance, ref bool __result) {
         if(Config.QOL.CountdownPausing) {
-            __result = !__instance._isShowingCalibrationResults && !__instance._isPostGameScreenVisible;
+            __result = !__instance._isShowingCalibrationResults
+                && !__instance._isPostGameScreenVisible
+                && !__instance._stageFlowUiController.IsShowingPauseScreen;
         }
     }
     

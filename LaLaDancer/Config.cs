@@ -23,6 +23,7 @@ public static class Config {
         
         public static Setting<bool> SkipSplashScreen { get; } = new(GROUP, "Skip Splash Screen", false, "Skips the splash screen on game startup.");
         public static Setting<bool> CountdownPausing { get; } = new(GROUP, "Enable Countdown Pausing", false, "Allows the game to be paused or the level to be restarted during the countdown.");
+        public static Setting<bool> DisableAutomaticPause { get; } = new(GROUP, "Disable Automatic Pause", false, "Prevents the game from automatically pausing when you unfocus the application.");
         public static Setting<bool> EnableAntiSoftlock { get; } = new(GROUP, "Enable Anti-Softlock", false, "Enables the anti-softlock key to reset to main menu.");
         public static Setting<KeyCode> AntiSoftlockKey { get; } = new(GROUP, "Anti-Softlock Key", KeyCode.F8, "Resets the game to the main menu when held for three seconds.");
     }
