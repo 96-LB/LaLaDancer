@@ -14,7 +14,7 @@ public class Plugin : RiftPlugin {
     public int AntiSoftlockTicks { get; private set; } = 0;
     
     public void Update() {
-        if(LaLaDancer.Config.QOL.EnableAntiSoftlock) {
+        if(!PluginData.Metadata.Deactivated && LaLaDancer.Config.QOL.EnableAntiSoftlock) {
             if(Input.GetKeyDown(LaLaDancer.Config.QOL.AntiSoftlockKey)) {
                 StartAntiSoftlock();
             } else if(Input.GetKeyUp(LaLaDancer.Config.QOL.AntiSoftlockKey) && AntiSoftlockHoldTime > 0f) {
