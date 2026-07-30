@@ -58,6 +58,7 @@ public static class RRStageControllerPatch {
     [HarmonyPostfix]
     public static void CanPause(RRStageController __instance, ref bool __result) {
         if(Config.QOL.CountdownPausing) {
+            // the game overly restricts when you can pause, so we relax the rules
             __result = !__instance._isShowingCalibrationResults
                 && !__instance._isPostGameScreenVisible
                 && !__instance._stageFlowUiController.IsShowingPauseScreen;
@@ -68,6 +69,8 @@ public static class RRStageControllerPatch {
     [HarmonyPostfix]
     public static void HandleUnpauseRoutine(RRStageController __instance) {
         if(Config.QOL.CountdownPausing && !__instance._isDisplayingDialogue) {
+            // to enable unpausing during the countdown, we switch back to gameplay sooner
+            // otherwise, the pause input gets eaten by the ui context
             InputAccessor.Instance.EnterInputContext(InputAccessor.InputContext.Gameplay, shouldDisableOtherMaps: true);
         }
     }
@@ -76,6 +79,7 @@ public static class RRStageControllerPatch {
     [HarmonyPostfix]
     public static void HandlePauseRoutine(RRStageController __instance) {
         if(Config.QOL.CountdownPausing) {
+            // since we can unpause during the countdown, we need to stop it if it's happening
             __instance._pauseRoutine?.Pipe(__instance.StopCoroutine);
         }
     }
