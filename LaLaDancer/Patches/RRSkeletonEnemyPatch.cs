@@ -52,11 +52,4 @@ public static class RRSkeletonEnemyPatch {
     public static void ProcessIncomingAttack(RRSkeletonEnemy __instance) {
         RRSkeletonEnemyState.Of(__instance).FixStaticCustomAssets();
     }
-    
-    [HarmonyPatch(nameof(RRSkeletonEnemy.OnSpawn))]
-    [HarmonyPostfix]
-    public static void OnSpawn(RRSkeletonEnemy __instance) {
-        throw new System.Exception();
-    }
-
 }
