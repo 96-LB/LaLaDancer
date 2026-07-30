@@ -27,6 +27,7 @@ public class Plugin : RiftPlugin {
                 Sfx.Play(Sfx.Cancel);
             } else if(Input.GetKey(LaLaDancer.Config.QOL.AntiSoftlockKey) && Time.time - AntiSoftlockHoldTime >= 3f) {
                 ResetAntiSoftlock();
+                SceneLoadingController.Instance.IsLoading = false;
                 SceneLoadingController.Instance.GoToScene("MainMenu");
             } else if(Input.GetKey(LaLaDancer.Config.QOL.AntiSoftlockKey) && Time.time - AntiSoftlockHoldTime >= AntiSoftlockTicks) {
                 AntiSoftlockTicks++;
