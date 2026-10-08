@@ -1,5 +1,11 @@
 # Changelog
 
+## 🧪 v0.3.0-beta - 8 October 2026
+⚠️ **WARNING:** This release is not compatible with the latest stable version of Rift of the NecroDancer!
+- Fixed an issue with the blademaster sound effect bugfix.
+- Removed obsolete "GI" kerning and custom particle bugfixes.
+- Updated code to be compatible with the choreomaps beta on the `publicbetatesting` branch.
+
 ## v0.2.0 - 30 July 2026
 - Fixed an issue with the trap hitsound bugfix which caused early hits to delete enemy hitsounds when latency was low.
 - Added two new bugfixes:

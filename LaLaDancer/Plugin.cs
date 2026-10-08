@@ -7,8 +7,8 @@ using UnityEngine;
 namespace LaLaDancer;
 
 
-[BepInPlugin("com.lalabuff.necrodancer.laladancer", "LaLaDancer", "0.2.0")]
-[NecroManagerInfo(menuNameOverride: "LaLaDancer")]
+[BepInPlugin("com.lalabuff.necrodancer.laladancer", "LaLaDancer", "0.3.0")]
+[NecroManagerInfo(menuNameOverride: "LaLaDancer", isBeta: true)]
 public class Plugin : RiftPlugin {
     public bool AntiSoftlockActive { get; private set; } = false;
     public float AntiSoftlockHoldTime { get; private set; } = float.PositiveInfinity;
