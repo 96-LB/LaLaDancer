@@ -17,7 +17,7 @@ public static class RRStageControllerPatch {
         if(Config.Bugfixes.BlademasterSfx) {
             // blademasters use the global bpm flag to set the speed of their sound effect
             // the game sets this flag only at the start of the beatmap, so bpm changes cause problems
-            var bpm = 60 / __instance.BeatmapPlayer.GetCurrentBeatLengthInSeconds(fmodTimeCapsule.CurrentBeatNumber);
+            var bpm = 60 / __instance.TimelineMapPlayer.GetCurrentBeatLengthInSeconds(fmodTimeCapsule.CurrentBeatNumber);
             AudioManager.Instance.SetGlobalBPM(bpm);
         }
     }
@@ -25,10 +25,10 @@ public static class RRStageControllerPatch {
     [HarmonyPatch(nameof(RRStageController.BeginPlay))]
     [HarmonyPrefix]
     public static void BeginPlay(RRStageController __instance) {
-        if(Config.Bugfixes.Countdown && __instance._beatmaps.Count > 0) {
+        if(Config.Bugfixes.Countdown && __instance._timelineMaps.Count > 0) {
             // countdowns for custom charts should use the bpm at the start beat, not the hardcoded countdownBpm
-            var startBeat = __instance._practiceModeStartBeatNumber - __instance._practiceModeTotalBeatsSkippedBeforeStartBeatmap;
-            var bpm = 60 / __instance.BeatmapPlayer.GetCurrentBeatLengthInSeconds((int)startBeat);
+            var startBeat = __instance._practiceModeStartBeatNumber - __instance._practiceModeTotalBeatsSkippedBeforeStartTimelineMap;
+            var bpm = 60 / __instance.TimelineMapPlayer.GetCurrentBeatLengthInSeconds((int)startBeat);
             __instance._customTrackCountdownBpm = bpm;
         }
     }

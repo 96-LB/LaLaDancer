@@ -19,7 +19,7 @@ public class RRWyrmEnemyState : State<RRWyrmEnemy, RRWyrmEnemyState> {
             _ => ""
         };
         
-        if(Instance.CustomAssetProvider._sprites.TryGetValue(name, out var sprite)) {
+        if(Instance.CustomAssetProvider._spritesByKey.TryGetValue(name, out var sprite)) {
             Instance.CurrentSprite = sprite;
         }
     }
